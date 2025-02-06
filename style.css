@@ -1,0 +1,72 @@
+/* Adjust checklist section */
+.checklist-section {
+    padding: 20px;
+}
+
+.mitzvah-item {
+    margin-bottom: 15px;
+    padding: 10px;
+    background: #f5f5f5;
+    border-radius: 5px;
+}
+
+.mitzvah-explanation {
+    margin: 8px 0 12px !important;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #eee;
+}
+
+.links-container {
+    margin: 8px 0 !important;
+    padding: 0 !important;
+    text-align: center;
+}
+
+/* Adjust clear button position */
+.gender-selection {
+    margin-bottom: 15px;
+}
+
+.clear-all {
+    display: block;
+    margin: 10px auto;
+    width: 200px;
+}
+
+/* Adjust checklist panel layout */
+.checklist-panel {
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 10px;
+    margin: 20px auto;
+    max-width: 600px;
+}
+
+.gender-tabs {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.checklist-controls {
+    text-align: center;
+    margin: 15px 0 0 !important;
+    order: 2;
+}
+
+.clear-all {
+    padding: 10px 25px;
+    background: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.dialog-link {
+    display: block;
+    margin: 6px auto;
+    text-align: center;
+    width: fit-content;
+} 

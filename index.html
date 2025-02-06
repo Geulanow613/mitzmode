@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mitz Mode Web - Level Up Your Soul</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/dialogs.css">
+</head>
+<body>
+    <div id="app">
+        <!-- Background Video -->
+        <video id="backgroundVideo" class="background-video" autoplay loop muted playsinline>
+            <source src="assets/background.mp4" type="video/mp4">
+        </video>
+
+        <!-- Stars Background -->
+        <div class="stars-container">
+            <div class="star">✡</div>
+            <div class="star">✡</div>
+            <div class="star">✡</div>
+            <div class="star">✡</div>
+            <div class="star">✡</div>
+        </div>
+        
+        <!-- Top Menu -->
+        <div class="top-menu">
+            <div class="left-buttons">
+                <button id="aboutButton" class="menu-button">About</button>
+                <button id="blessingsButton" class="menu-button">Blessings</button>
+                <button id="checklistButton" class="menu-button">Daily Checklist</button>
+            </div>
+            <div class="mitzvot-counter" id="mitzvotCounter">
+                <span class="counter-icon">✡</span>
+                <span id="mitzvahCount">0</span> Mitzvot
+            </div>
+        </div>
+        
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Instruction Text -->
+            <div id="mitzvahInstruction" class="mitzvah-instruction">
+                <button class="instruction-close">×</button>
+                <div class="instruction-text">
+                    Tap the "Mitzvah Me"<br>
+                    button for a mitzvah!
+                </div>
+            </div>
+
+            <!-- Next Mitzvah Button -->
+            <button id="mainMitzvahButton">
+                <img src="assets/mitzvah-button.png" alt="Next Mitzvah" class="mitzvah-button-img">
+            </button>
+
+            <!-- Add a Mitzvah Button -->
+            <button id="addMitzvahButton" class="secondary-button">Add a Mitzvah</button>
+            
+            <!-- What's a Mitzvah Button -->
+            <button id="mitzvahInfoButton" class="secondary-button golden">What's a Mitzvah?</button>
+        </div>
+        
+        <!-- Daily Checklist Panel -->
+        <div id="dailyChecklist" class="checklist-panel hidden">
+            <div class="gender-tabs">
+                <button class="tab-button active" data-gender="male">Men's Mitzvot</button>
+                <button class="tab-button" data-gender="female">Women's Mitzvot</button>
+                <button class="close-button">×</button>
+            </div>
+            <div class="checklist-controls">
+                <button onclick="clearAllCheckboxes()" class="clear-all">Clear All</button>
+            </div>
+            <div id="maleContent" class="gender-content active"></div>
+            <div id="femaleContent" class="gender-content"></div>
+        </div>
+    </div>
+    
+    <!-- Scripts -->
+    <script type="text/javascript" src="js/config.js"></script>
+    <script type="text/javascript" src="js/storage.js"></script>
+    <script type="text/javascript" src="js/media.js"></script>
+    <script type="text/javascript" src="js/dialogs.js"></script>
+    <script type="text/javascript" src="js/app.js"></script>
+</body>
+</html> 
