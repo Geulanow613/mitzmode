@@ -1,0 +1,270 @@
+/* Star Animations */
+.star {
+    animation: float 6s infinite;
+}
+
+.star:nth-child(1) { top: 10%; left: 20%; animation-delay: 0s; }
+.star:nth-child(2) { top: 30%; right: 15%; animation-delay: 1s; }
+.star:nth-child(3) { top: 50%; left: 10%; animation-delay: 2s; }
+.star:nth-child(4) { top: 70%; right: 25%; animation-delay: 3s; }
+.star:nth-child(5) { top: 85%; left: 30%; animation-delay: 4s; }
+
+@keyframes float {
+    0%, 100% { 
+        transform: translateY(0) rotate(0deg); 
+        opacity: 0.3;
+    }
+    50% { 
+        transform: translateY(-20px) rotate(180deg); 
+        opacity: 0.6;
+    }
+}
+
+@keyframes twinkle {
+    0%, 100% {
+        opacity: 0.3;
+        transform: scale(0.8);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.2);
+    }
+}
+
+/* Dialog Animations */
+.dialog {
+    animation: fadeIn 0.3s ease-out;
+}
+
+.dialog.closing {
+    animation: fadeOut 0.3s ease-in;
+}
+
+@keyframes fadeIn {
+    from { 
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to { 
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeOut {
+    from { 
+        opacity: 1;
+        transform: translateY(0);
+    }
+    to { 
+        opacity: 0;
+        transform: translateY(20px);
+    }
+}
+
+/* Level Up Animation */
+.level-up {
+    animation: levelUp 1s ease-out;
+}
+
+@keyframes levelUp {
+    0% {
+        transform: scale(0.5);
+        opacity: 0;
+    }
+    50% {
+        transform: scale(1.2);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* Sparkle Animation */
+.sparkle {
+    position: absolute;
+    pointer-events: none;
+    animation: sparkle 1s linear forwards;
+}
+
+@keyframes sparkle {
+    0% {
+        transform: translate(0, 0) rotate(0deg);
+        opacity: 1;
+    }
+    100% {
+        transform: translate(var(--tx), var(--ty)) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* Menu Dropdown Animation */
+.menu-dropdown:not(.hidden) {
+    animation: slideDown 0.3s ease-out;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Button Press Animation */
+.button-press {
+    animation: press 0.2s ease-in-out;
+}
+
+@keyframes press {
+    0% { transform: scale(1); }
+    50% { transform: scale(0.95); }
+    100% { transform: scale(1); }
+}
+
+/* ──────────────────────────────────────────────────────────────────────
+   Holy Light Flash (full-screen "blessing" sheet that sweeps after Accept).
+   Four variants cycle on consecutive accepts, mirroring the Android dialog:
+     0 — diagonal blade lower-left → upper-right
+     1 — wide horizontal sheet (whole screen)
+     2 — diagonal blade right → left
+     3 — horizontal band rising bottom → top
+   ──────────────────────────────────────────────────────────────────────── */
+.holy-light-flash {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 3000;
+    overflow: hidden;
+    opacity: 0;
+    transition: opacity 600ms ease-out;
+}
+
+.holy-light-flash.playing { opacity: 1; }
+.holy-light-flash.fading  { opacity: 0; }
+
+/* Soft ambient glow under every variant. */
+.holy-flash-ambient {
+    position: absolute;
+    inset: -5%;
+    background: radial-gradient(
+        circle at 50% 50%,
+        rgba(255, 248, 225, 0.32) 0%,
+        rgba(255, 236, 179, 0.12) 35%,
+        rgba(255, 248, 225, 0.04) 60%,
+        transparent 75%
+    );
+    opacity: 0;
+    animation: holyFlashAmbient 900ms ease-out forwards;
+}
+
+.holy-light-flash.variant-1 .holy-flash-ambient {
+    background: radial-gradient(
+        circle at 50% 50%,
+        rgba(255, 253, 231, 0.48) 0%,
+        rgba(255, 236, 179, 0.22) 30%,
+        rgba(255, 248, 225, 0.10) 55%,
+        transparent 80%
+    );
+}
+
+@keyframes holyFlashAmbient {
+    0%   { opacity: 0; }
+    20%  { opacity: 1; }
+    60%  { opacity: 0.85; }
+    100% { opacity: 0; }
+}
+
+.holy-flash-blade {
+    position: absolute;
+    top: -30%;
+    height: 160%;
+    width: 50%;
+    background: linear-gradient(
+        90deg,
+        transparent 0%,
+        rgba(255, 253, 231, 0.55) 30%,
+        rgba(255, 255, 255, 0.95) 50%,
+        rgba(255, 248, 220, 0.5) 70%,
+        transparent 100%
+    );
+    filter: blur(2px);
+    will-change: transform, opacity;
+}
+
+.holy-flash-blade.secondary {
+    width: 60%;
+    background: linear-gradient(
+        90deg,
+        transparent 0%,
+        rgba(255, 215, 0, 0.40) 30%,
+        rgba(255, 253, 231, 0.55) 50%,
+        rgba(255, 215, 0, 0.30) 70%,
+        transparent 100%
+    );
+    filter: blur(4px);
+    animation-delay: 100ms !important;
+}
+
+/* Variant 0 — diagonal blade lower-left → upper-right (rotated -34deg). */
+.holy-light-flash.variant-0 .holy-flash-blade {
+    transform: rotate(-34deg) translateX(-180vw);
+    animation: holyFlashDiagonalLR 900ms cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes holyFlashDiagonalLR {
+    0%   { transform: rotate(-34deg) translateX(-180vw); opacity: 0; }
+    20%  { opacity: 1; }
+    80%  { opacity: 1; }
+    100% { transform: rotate(-34deg) translateX(180vw); opacity: 0; }
+}
+
+/* Variant 1 — wide horizontal sheet (no rotation) sweeping across. */
+.holy-light-flash.variant-1 .holy-flash-blade {
+    width: 130%;
+    transform: translateX(-180vw);
+    animation: holyFlashFullSheet 1000ms cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes holyFlashFullSheet {
+    0%   { transform: translateX(-180vw); opacity: 0; }
+    20%  { opacity: 1; }
+    80%  { opacity: 1; }
+    100% { transform: translateX(180vw); opacity: 0; }
+}
+
+/* Variant 2 — diagonal blade right → left (inverted). */
+.holy-light-flash.variant-2 .holy-flash-blade {
+    transform: rotate(-34deg) translateX(180vw);
+    animation: holyFlashDiagonalRL 900ms cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes holyFlashDiagonalRL {
+    0%   { transform: rotate(-34deg) translateX(180vw); opacity: 0; }
+    20%  { opacity: 1; }
+    80%  { opacity: 1; }
+    100% { transform: rotate(-34deg) translateX(-180vw); opacity: 0; }
+}
+
+/* Variant 3 — horizontal band rising bottom → top (rotated 90deg
+   so the linear-gradient sweep runs vertically). */
+.holy-light-flash.variant-3 .holy-flash-blade {
+    top: 50%;
+    left: -30%;
+    width: 160%;
+    height: 50%;
+    transform: rotate(90deg) translateX(120vh);
+    animation: holyFlashBottomToTop 1000ms cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes holyFlashBottomToTop {
+    0%   { transform: rotate(90deg) translateX(120vh); opacity: 0; }
+    20%  { opacity: 1; }
+    80%  { opacity: 1; }
+    100% { transform: rotate(90deg) translateX(-120vh); opacity: 0; }
+}
