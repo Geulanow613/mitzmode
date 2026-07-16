@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "upcoming": [
+    { "id": "shabbat", "name": "Shabbat", "recurring": "weekly_friday", "prepMitzvot": ["shabbat_candles", "shabbat_prep"] },
+    { "id": "purim", "name": "Purim", "hebrewMonth": 12, "hebrewDay": 14, "prepMitzvot": [] },
+    { "id": "pesach", "name": "Pesach", "hebrewMonth": 1, "hebrewDay": 15, "prepMitzvot": ["shabbat_prep"] },
+    { "id": "shavuot", "name": "Shavuot", "hebrewMonth": 3, "hebrewDay": 6, "prepMitzvot": [] },
+    { "id": "rosh_hashana", "name": "Rosh Hashana", "hebrewMonth": 7, "hebrewDay": 1, "prepMitzvot": [] },
+    { "id": "yom_kippur", "name": "Yom Kippur", "hebrewMonth": 7, "hebrewDay": 10, "prepMitzvot": [] },
+    { "id": "sukkot", "name": "Sukkot", "hebrewMonth": 7, "hebrewDay": 15, "prepMitzvot": [] },
+    { "id": "chanukah", "name": "Chanukah", "hebrewMonth": 9, "hebrewDay": 25, "prepMitzvot": [] }
+  ]
+}
